@@ -58,13 +58,14 @@ ActiveRecord::Schema.define(version: 20160628144947) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "votable_id"
     t.string   "votable_type"
+    t.integer  "user_id"
+    t.integer  "votable_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "votes", ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", unique: true, using: :btree
+  add_index "votes", ["votable_id", "user_id"], name: "index_votes_on_votable_id_and_user_id", unique: true, using: :btree
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"

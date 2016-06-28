@@ -10,15 +10,13 @@ my_app.controller('PostsCtrl', [
         $scope.post = post;
 
         $scope.addComment = function () {
-            if ($scope.body === '') { return; };
+            if ($scope.body === '') { return; }
 
             posts.addComment(post.id, {
                 body: $scope.body,
-                author: $scope.user,
+                author: $scope.user
             }).success(function (comment) {
                 $scope.post.comments.push(comment);
-            }).error(function(comment){
-
             });
 
             $scope.body = '';

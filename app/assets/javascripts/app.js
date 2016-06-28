@@ -1,4 +1,4 @@
-my_app = angular.module('flapperNews', ['ui.router', 'templates', 'Devise']);
+my_app = angular.module('flapperNews', ['ui.router', 'templates', 'Devise', 'ui-notification']);
 
 my_app.config([
     '$stateProvider',
@@ -55,3 +55,15 @@ my_app.config([
 
         $urlRouterProvider.otherwise('/');
     }]);
+
+my_app.config(function(NotificationProvider) {
+    NotificationProvider.setOptions({
+        delay: 5000,
+        startTop: 20,
+        startRight: 10,
+        verticalSpacing: 20,
+        horizontalSpacing: 20,
+        positionX: 'right',
+        positionY: 'bottom'
+    });
+});
